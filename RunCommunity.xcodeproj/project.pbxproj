@@ -17,6 +17,8 @@
 		1623C63222324199000C4E63 /* Watch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623C63122324199000C4E63 /* Watch.storyboard */; };
 		1623C634223241A0000C4E63 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623C633223241A0000C4E63 /* Plan.storyboard */; };
 		1623C636223241AB000C4E63 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623C635223241AB000C4E63 /* User.storyboard */; };
+		D8B92C7A2238D8DC009E7FAB /* addnewaccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B92C792238D8DC009E7FAB /* addnewaccount.swift */; };
+		D8B92C7C223A3A33009E7FAB /* person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B92C7B223A3A33009E7FAB /* person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		1623C63122324199000C4E63 /* Watch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watch.storyboard; sourceTree = "<group>"; };
 		1623C633223241A0000C4E63 /* Plan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
 		1623C635223241AB000C4E63 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		D8B92C792238D8DC009E7FAB /* addnewaccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addnewaccount.swift; sourceTree = "<group>"; };
+		D8B92C7B223A3A33009E7FAB /* person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 			children = (
 				1623C5F122317372000C4E63 /* AppDelegate.swift */,
 				1623C5F322317372000C4E63 /* ViewController.swift */,
+				D8B92C792238D8DC009E7FAB /* addnewaccount.swift */,
+				D8B92C7B223A3A33009E7FAB /* person.swift */,
 				1623C5F522317372000C4E63 /* Main.storyboard */,
 				1623C62D22324175000C4E63 /* Community.storyboard */,
 				1623C62F22324191000C4E63 /* Sport.storyboard */,
@@ -155,7 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B92C7A2238D8DC009E7FAB /* addnewaccount.swift in Sources */,
 				1623C5F422317372000C4E63 /* ViewController.swift in Sources */,
+				D8B92C7C223A3A33009E7FAB /* person.swift in Sources */,
 				1623C5F222317372000C4E63 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

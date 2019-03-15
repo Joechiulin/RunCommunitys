@@ -1,42 +1,71 @@
 //
-//  ViewController.swift
+//  addnewaccount.swift
 //  RunCommunity
 //
-//  Created by PIG on 2019/3/7.
+//  Created by Joe on 2019/3/13.
 //  Copyright © 2019 PIG. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-    @IBOutlet weak var tfpassword: UITextField!
+class Addnewaccount: UIViewController {
+    @IBOutlet weak var imageview: UIImageView!
+    
     @IBOutlet weak var tfaccount: UITextField!
+    
+    @IBOutlet weak var tfpassword: UITextField!
+    
+    @IBOutlet weak var tfpasswordck: UITextField!
+    
+    @IBOutlet weak var tfphone: UITextField!
+    
+    @IBOutlet weak var tfmail: UITextField!
+    @IBOutlet weak var tvresult: UITextView!
     let url_server = URL(string: "http://127.0.0.1:8080/ServerConnect_Web/ServerConnectServlet")
 
-    @IBOutlet weak var tvresult: UITextView!
+    var persons : [Person]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func Login(_ sender: Any) {
+    
+    @IBAction func btAdd(_ sender: Any) {
         checkdata()
     }
-    
     func checkdata()  {
         let userName = tfaccount.text == nil ? "" : tfaccount.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = tfpassword.text == nil ? "" : tfpassword.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let passwordcheck = tfpasswordck.text == nil ?"": tfpasswordck.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let phone = tfphone.text == nil ? "" : tfphone.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = tfmail.text == nil ? "" : tfmail.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+     //   let persons = Person(userName!, password!, phone!, mail!)
+        
+        
         if userName!.isEmpty || password!.isEmpty {
             tvresult.text = "user name or password is invalid"
             return
         }
+        if password != passwordcheck{
+            tvresult.text = "密碼確認錯誤"
+            return
+        }
+        if phone!.isEmpty || email!.isEmpty{
+            tvresult.text = "phone  or mail is invalid"
+            return
+        }
         
         //        savedata()
+        if password == passwordcheck{
+        let persons = Person(userName!, password!, phone!, email!)
+            let datas = try?String(bytes: JSONEncoder().encode(persons), encoding: .utf8)
+            
         var requestParam = [String: String]()
-        requestParam["userName"] = userName
-        requestParam["password"] = password
-        executeTask(url_server!, requestParam)
-    }
-    @IBAction func Addaccount(_ sender: Any) {
         
+        requestParam["action"] = "insert"
+        requestParam["persons"] = datas!
+        executeTask(url_server!, requestParam)
+        }
     }
     func executeTask(_ url_server: URL, _ requestParam: [String: String]) {
         // 將輸出資料列印出來除錯用
@@ -55,23 +84,30 @@ class ViewController: UIViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
+                    
+                    
                     print(data!)
+                    //                    if let result  =
                     
                     let bol = String(data: data!, encoding: .utf8)
                     let bol1 = bol?.trimmingCharacters(in: .whitespaces)
                     print(bol1!)
                     
                     if ( bol1  ==  "true\n"){
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarview")
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickview")
                         
                         self.present(viewController, animated: false, completion: nil)
+                        
+                        
+                        
                         // 將結果顯示在UI元件上必須轉給main thread
-                        }
+//                        DispatchQueue.main.async {
+//                  /         self.showResult(data!)
+//                        }}
+                        
+                    }
                     else{
                         self.dismiss(animated: true)
-                        DispatchQueue.main.async {
-                            self.tvresult.text.append("帳號錯誤")
-                        }
                     }
                 }
             } else {
@@ -80,6 +116,5 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
-    
 }
 
