@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TAq-cQ-gMH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TAq-cQ-gMH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -108,6 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KJc-F7-Xrc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCK-ag-jWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,15 +118,22 @@
         <!--Table View Controller-->
         <scene sceneID="f3d-oh-UIj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vl8-Zx-a0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="gDA-7a-EB3" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pqy-OK-i3M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="jsK-Ch-91o">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="gDA-7a-EB3" id="1SI-s6-KpU"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XY2-46-zuO">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XY2-46-zuO" id="PFp-HV-jrg">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -138,14 +146,26 @@
                             <outlet property="delegate" destination="gDA-7a-EB3" id="96H-Vt-kMW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="M7l-hB-Cc0" id="H3J-Sn-WDU"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vl8-Zx-a0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="M7l-hB-Cc0">
+                    <connections>
+                        <outlet property="delegate" destination="gDA-7a-EB3" id="TPa-Z1-uTz"/>
+                        <outlet property="searchBar" destination="jsK-Ch-91o" id="uuJ-fK-ULO"/>
+                        <outlet property="searchContentsController" destination="gDA-7a-EB3" id="H6c-os-8Z1"/>
+                        <outlet property="searchResultsDataSource" destination="gDA-7a-EB3" id="no9-v1-QYN"/>
+                        <outlet property="searchResultsDelegate" destination="gDA-7a-EB3" id="nAp-kH-mNS"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1754" y="-31"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Rfk-Fh-e7T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ok-ud-59G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="v5n-ON-msc" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uTq-53-gPf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="516"/>
@@ -167,6 +187,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ok-ud-59G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1753" y="637"/>
         </scene>
