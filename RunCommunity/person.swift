@@ -21,5 +21,10 @@ class  Person: Codable {
         self.email = email
     }
     
+    public init(_ account: String, _ password: String){
+        self.account = account
+        self.password = password
+     
+    }
     
 }

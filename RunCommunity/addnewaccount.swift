@@ -59,11 +59,13 @@ class Addnewaccount: UIViewController {
         if password == passwordcheck{
         let persons = Person(userName!, password!, phone!, email!)
             let datas = try?String(bytes: JSONEncoder().encode(persons), encoding: .utf8)
+            let account = try?String(bytes: JSONEncoder().encode(userName), encoding: .utf8)
             
         var requestParam = [String: String]()
         
         requestParam["action"] = "insert"
         requestParam["persons"] = datas!
+        requestParam["account"] = userName!
         executeTask(url_server!, requestParam)
         }
     }
@@ -93,11 +95,11 @@ class Addnewaccount: UIViewController {
                     let bol1 = bol?.trimmingCharacters(in: .whitespaces)
                     print(bol1!)
                     
-                    if ( bol1  ==  "true\n"){
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pickview")
+                    if ( bol1  ==  "1"){
                         
-                        self.present(viewController, animated: false, completion: nil)
-                        
+                        DispatchQueue.main.async {
+                            self.tvresult.text.append("帳號重複")
+                        }
                         
                         
                         // 將結果顯示在UI元件上必須轉給main thread

@@ -13,7 +13,7 @@
         <!--Community-->
         <scene sceneID="OSr-1v-8wI">
             <objects>
-                <viewController id="yeO-wc-DYw" sceneMemberID="viewController">
+                <viewController id="yeO-wc-DYw" customClass="Community" customModule="RunCommunity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ffX-5m-OcL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="279" id="CgG-Y8-Dan">
+                                    <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="279" id="CgG-Y8-Dan" customClass="CommunityTableViewCell" customModule="RunCommunity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="279"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CgG-Y8-Dan" id="ws0-ie-gii">
@@ -63,6 +63,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDo-zN-wdK">
                                                     <rect key="frame" x="24" y="257" width="46" height="20.5"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="btLike:" destination="yeO-wc-DYw" eventType="touchUpInside" id="8LU-yK-oBj"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWp-qb-9sP">
                                                     <rect key="frame" x="286" y="257" width="42" height="20.5"/>
@@ -94,6 +97,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="MWp-qb-9sP" secondAttribute="trailing" constant="15" id="sOj-qJ-jmX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ImPhoto" destination="clB-nL-rMC" id="O1L-UC-AsH"/>
+                                            <outlet property="Imimageview" destination="PXP-jZ-xrW" id="Tbt-jb-iDj"/>
+                                            <outlet property="Lalike" destination="MWp-qb-9sP" id="iaJ-Lk-N88"/>
+                                            <outlet property="Lalocation" destination="mTM-N4-YxP" id="Uce-FF-gWF"/>
+                                            <outlet property="Laname" destination="3c0-vQ-6No" id="QVX-li-3dg"/>
+                                            <outlet property="tvtext" destination="EQY-Vg-4ys" id="5ih-pb-BDU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

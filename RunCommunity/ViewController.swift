@@ -28,11 +28,13 @@ class ViewController: UIViewController {
             tvresult.text = "user name or password is invalid"
             return
         }
+        let persons = Person(userName!, password!)
+        let datas = try?String(bytes: JSONEncoder().encode(persons), encoding: .utf8)
         
         //        savedata()
         var requestParam = [String: String]()
-        requestParam["userName"] = userName
-        requestParam["password"] = password
+        requestParam["data"] = datas!
+        requestParam["action"] = "login"
         executeTask(url_server!, requestParam)
     }
     @IBAction func Addaccount(_ sender: Any) {
@@ -61,10 +63,13 @@ class ViewController: UIViewController {
                     let bol1 = bol?.trimmingCharacters(in: .whitespaces)
                     print(bol1!)
                     
-                    if ( bol1  ==  "true\n"){
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarview")
-                        
-                        self.present(viewController, animated: false, completion: nil)
+                    if ( bol1 == "\"true\""){
+//                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarview")
+                         DispatchQueue.main.async {if let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabbarview"){
+                          
+                            self.present(controller, animated: true, completion: nil)
+                            }}
+//                        self.present(viewController, animated: false, completion: nil)
                         // 將結果顯示在UI元件上必須轉給main thread
                         }
                     else{
