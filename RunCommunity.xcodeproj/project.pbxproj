@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1612D95F2242599000330297 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612D95E2242599000330297 /* Detail.swift */; };
 		1623C5F222317372000C4E63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623C5F122317372000C4E63 /* AppDelegate.swift */; };
 		1623C5F422317372000C4E63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623C5F322317372000C4E63 /* ViewController.swift */; };
 		1623C5F722317372000C4E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623C5F522317372000C4E63 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1612D95E2242599000330297 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		1623C5EE22317372000C4E63 /* RunCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1623C5F122317372000C4E63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1623C5F322317372000C4E63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		1623C5E522317371000C4E63 = {
 			isa = PBXGroup;
 			children = (
+				1612D95E2242599000330297 /* Detail.swift */,
 				1623C5F022317372000C4E63 /* RunCommunity */,
 				1623C5EF22317372000C4E63 /* Products */,
 			);
@@ -232,6 +235,7 @@
 				1623C5F222317372000C4E63 /* AppDelegate.swift in Sources */,
 				87E673D422325F580056C257 /* Plan+CoreDataClass.swift in Sources */,
 				87E673D122325E930056C257 /* CoreData.xcdatamodeld in Sources */,
+				1612D95F2242599000330297 /* Detail.swift in Sources */,
 				87D5436622423B6E00ABBE1B /* Page_User_AchievementTVC.swift in Sources */,
 				D8CE861B22421C06002B703B /* Communitycell.swift in Sources */,
 				D8CE861D22421EA3002B703B /* Comm.swift in Sources */,
