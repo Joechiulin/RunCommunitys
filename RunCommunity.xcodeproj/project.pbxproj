@@ -27,7 +27,6 @@
 		D8CE861B22421C06002B703B /* Communitycell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CE861A22421C06002B703B /* Communitycell.swift */; };
 		D8CE861D22421EA3002B703B /* Comm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CE861C22421EA3002B703B /* Comm.swift */; };
 		D8CE861F22422079002B703B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CE861E22422079002B703B /* Common.swift */; };
-		D8CE8622224222A7002B703B /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8CE8621224222A7002B703B /* noImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +52,6 @@
 		D8CE861A22421C06002B703B /* Communitycell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communitycell.swift; sourceTree = "<group>"; };
 		D8CE861C22421EA3002B703B /* Comm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comm.swift; sourceTree = "<group>"; };
 		D8CE861E22422079002B703B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		D8CE8621224222A7002B703B /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = noImage.jpg; path = ../../../../../Downloads/iosweb/Spot_MySQLDemo/Spot_MySQL_iOS/Spot_MySQL_iOS/noImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +84,8 @@
 		1623C5F022317372000C4E63 /* RunCommunity */ = {
 			isa = PBXGroup;
 			children = (
-				87E673D222325F580056C257 /* Plan+CoreDataClass.swift */,
-				87E673D322325F580056C257 /* Plan+CoreDataProperties.swift */,
+				87D5435C2242382700ABBE1B /* Page_Plan */,
+				87D5435B2242381A00ABBE1B /* Page_User */,
 				1623C5F122317372000C4E63 /* AppDelegate.swift */,
 				1623C5F322317372000C4E63 /* ViewController.swift */,
 				D8CE861E22422079002B703B /* Common.swift */,
@@ -100,24 +98,31 @@
 				1623C62D22324175000C4E63 /* Community.storyboard */,
 				1623C62F22324191000C4E63 /* Sport.storyboard */,
 				1623C63122324199000C4E63 /* Watch.storyboard */,
-				1623C633223241A0000C4E63 /* Plan.storyboard */,
-				1623C635223241AB000C4E63 /* User.storyboard */,
-				D8CE862022422282002B703B /* images */,
 				1623C5F822317373000C4E63 /* Assets.xcassets */,
 				1623C5FA22317373000C4E63 /* LaunchScreen.storyboard */,
 				1623C5FD22317373000C4E63 /* Info.plist */,
 				87E673CF22325E930056C257 /* CoreData.xcdatamodeld */,
-				87ECB80C223FDBF600F99771 /* Page_UserVC.swift */,
 			);
 			path = RunCommunity;
 			sourceTree = "<group>";
 		};
-		D8CE862022422282002B703B /* images */ = {
+		87D5435B2242381A00ABBE1B /* Page_User */ = {
 			isa = PBXGroup;
 			children = (
-				D8CE8621224222A7002B703B /* noImage.jpg */,
+				1623C635223241AB000C4E63 /* User.storyboard */,
+				87ECB80C223FDBF600F99771 /* Page_UserVC.swift */,
 			);
-			path = images;
+			path = Page_User;
+			sourceTree = "<group>";
+		};
+		87D5435C2242382700ABBE1B /* Page_Plan */ = {
+			isa = PBXGroup;
+			children = (
+				87E673D222325F580056C257 /* Plan+CoreDataClass.swift */,
+				87E673D322325F580056C257 /* Plan+CoreDataProperties.swift */,
+				1623C633223241A0000C4E63 /* Plan.storyboard */,
+			);
+			path = Page_Plan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,7 +188,6 @@
 				1623C634223241A0000C4E63 /* Plan.storyboard in Resources */,
 				1623C63222324199000C4E63 /* Watch.storyboard in Resources */,
 				1623C5FC22317373000C4E63 /* LaunchScreen.storyboard in Resources */,
-				D8CE8622224222A7002B703B /* noImage.jpg in Resources */,
 				1623C636223241AB000C4E63 /* User.storyboard in Resources */,
 				1623C5F922317373000C4E63 /* Assets.xcassets in Resources */,
 				1623C5F722317372000C4E63 /* Main.storyboard in Resources */,
