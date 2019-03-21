@@ -1,21 +1,18 @@
 //
-//  Page_User_FriendTVC.swift
+//  Page_ChatTVC.swift
 //  RunCommunity
 //
-//  Created by Sin-yuan Jiang on 2019/3/20.
+//  Created by Sin-yuan Jiang on 2019/3/21.
 //  Copyright © 2019 PIG. All rights reserved.
 //
 
 import UIKit
 
-class Page_User_FriendTVC: UITableViewController {
-  let userDefault = UserDefaults.standard
-     let url_server = URL(string: "http://127.0.0.1:8080/ExIosLogin/UserFriends")
-    
+class Page_ChatTVC: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userName = self.userDefault.string(forKey: "userName")
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -55,7 +52,7 @@ class Page_User_FriendTVC: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
