@@ -89,13 +89,9 @@
 				87E673D222325F580056C257 /* Plan+CoreDataClass.swift */,
 				87E673D322325F580056C257 /* Plan+CoreDataProperties.swift */,
 				1623C5F122317372000C4E63 /* AppDelegate.swift */,
-				1623C5F322317372000C4E63 /* ViewController.swift */,
+				D8CE86242242306A002B703B /* login */,
+				D8CE862322423029002B703B /* Community */,
 				D8CE861E22422079002B703B /* Common.swift */,
-				D8CE861A22421C06002B703B /* Communitycell.swift */,
-				D8B92C792238D8DC009E7FAB /* addnewaccount.swift */,
-				D8CE8616223B8EB5002B703B /* Community.swift */,
-				D8CE861C22421EA3002B703B /* Comm.swift */,
-				D8B92C7B223A3A33009E7FAB /* person.swift */,
 				1623C5F522317372000C4E63 /* Main.storyboard */,
 				1623C62D22324175000C4E63 /* Community.storyboard */,
 				1623C62F22324191000C4E63 /* Sport.storyboard */,
@@ -118,6 +114,26 @@
 				D8CE8621224222A7002B703B /* noImage.jpg */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		D8CE862322423029002B703B /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				D8CE861C22421EA3002B703B /* Comm.swift */,
+				D8CE8616223B8EB5002B703B /* Community.swift */,
+				D8CE861A22421C06002B703B /* Communitycell.swift */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		D8CE86242242306A002B703B /* login */ = {
+			isa = PBXGroup;
+			children = (
+				D8B92C792238D8DC009E7FAB /* addnewaccount.swift */,
+				D8B92C7B223A3A33009E7FAB /* person.swift */,
+				1623C5F322317372000C4E63 /* ViewController.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
