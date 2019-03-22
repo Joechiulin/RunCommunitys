@@ -20,7 +20,7 @@ class HealthVC: UIViewController,UIScrollViewDelegate {
         // Do any additional setup after loading the view.
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        smHealth.selectedSegmentIndex = Int(scrollView.bounds.size.width)
+        smHealth.selectedSegmentIndex = Int(scrollView.contentOffset.x/scrollView.bounds.size.width)
     }
     @IBAction func smAction(_ sender: Any) {
         switch smHealth.selectedSegmentIndex {

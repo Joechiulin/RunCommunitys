@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-23.199999999999999" y="-51.724137931034484"/>
         </scene>
-        <!--Title-->
+        <!--RunCommunity-->
         <scene sceneID="xAW-iM-u6H">
             <objects>
                 <viewController id="AVe-fC-7E7" customClass="HealthVC" customModule="RunCommunity" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +115,7 @@
                         <viewLayoutGuide key="safeArea" id="dzh-LV-fz8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="watch" id="Q1S-SG-8RQ"/>
-                    <navigationItem key="navigationItem" title="Title" id="ShU-15-9c2">
+                    <navigationItem key="navigationItem" title="RunCommunity" id="ShU-15-9c2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="a4F-py-eVm">
                             <connections>
                                 <segue destination="OOp-mi-MD1" kind="show" id="4Sq-ib-ogF"/>
@@ -230,16 +230,31 @@
             </objects>
             <point key="canvasLocation" x="950" y="815"/>
         </scene>
-        <!--View Controller-->
+        <!--SleepVC-->
         <scene sceneID="fUO-az-j2H">
             <objects>
-                <viewController id="Hlx-g5-H4J" sceneMemberID="viewController">
+                <viewController id="Hlx-g5-H4J" customClass="SleepVC" customModule="RunCommunity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fgL-OL-rY3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="524.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1P-RB-8Ai" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="5" y="30" width="365" height="244.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="C1P-RB-8Ai" firstAttribute="leading" secondItem="SbR-TP-vCn" secondAttribute="leading" constant="5" id="8aG-HA-mKP"/>
+                            <constraint firstItem="SbR-TP-vCn" firstAttribute="trailing" secondItem="C1P-RB-8Ai" secondAttribute="trailing" constant="5" id="F7O-GN-tCU"/>
+                            <constraint firstItem="C1P-RB-8Ai" firstAttribute="top" secondItem="SbR-TP-vCn" secondAttribute="top" constant="10" id="c0G-6m-CsE"/>
+                            <constraint firstItem="SbR-TP-vCn" firstAttribute="bottom" secondItem="C1P-RB-8Ai" secondAttribute="bottom" constant="250" id="lwL-vc-FBL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SbR-TP-vCn"/>
                     </view>
+                    <connections>
+                        <outlet property="bcSleep" destination="C1P-RB-8Ai" id="zpK-6b-2pe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQm-t7-m8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

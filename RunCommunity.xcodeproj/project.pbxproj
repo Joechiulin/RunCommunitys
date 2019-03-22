@@ -30,6 +30,7 @@
 		166158DD2243D45800EC797E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166158DA2243D32D00EC797E /* Charts.framework */; };
 		166158DE2243D45800EC797E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 166158DA2243D32D00EC797E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16CBEA0E224468D200871D2E /* HealthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBEA0D224468D200871D2E /* HealthVC.swift */; };
+		16CBEA182244908600871D2E /* SleepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CBEA172244908600871D2E /* SleepVC.swift */; };
 		8704BF902243748700D2A5B0 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704BF8F2243748700D2A5B0 /* Friend.swift */; };
 		8704BF922243753F00D2A5B0 /* User_FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704BF912243753F00D2A5B0 /* User_FriendCell.swift */; };
 		8704BF9522437FE000D2A5B0 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8704BF9422437FE000D2A5B0 /* Chat.storyboard */; };
@@ -111,6 +112,7 @@
 		1623C635223241AB000C4E63 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		166158D42243D32C00EC797E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master-4/Charts.xcodeproj"; sourceTree = "<group>"; };
 		16CBEA0D224468D200871D2E /* HealthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthVC.swift; sourceTree = "<group>"; };
+		16CBEA172244908600871D2E /* SleepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepVC.swift; sourceTree = "<group>"; };
 		8704BF8F2243748700D2A5B0 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		8704BF912243753F00D2A5B0 /* User_FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_FriendCell.swift; sourceTree = "<group>"; };
 		8704BF9422437FE000D2A5B0 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				160E5CAA2243D5D9005E43D7 /* detailChartVC.swift */,
 				160E5CAB2243D5D9005E43D7 /* InsertVC.swift */,
 				160E5CAC2243D5D9005E43D7 /* HeartInsert.swift */,
+				16CBEA172244908600871D2E /* SleepVC.swift */,
 				160E5CAD2243D5D9005E43D7 /* WatchCommon.swift */,
 				160E5CAE2243D5D9005E43D7 /* Detail.swift */,
 				160E5CAF2243D5D9005E43D7 /* WatchHeart.swift */,
@@ -385,6 +388,7 @@
 				87D5436622423B6E00ABBE1B /* Page_User_AchievementTVC.swift in Sources */,
 				D8CE861B22421C06002B703B /* Communitycell.swift in Sources */,
 				160E5CB72243D5D9005E43D7 /* HeartInsert.swift in Sources */,
+				16CBEA182244908600871D2E /* SleepVC.swift in Sources */,
 				8704BF902243748700D2A5B0 /* Friend.swift in Sources */,
 				160E5CBC2243D5D9005E43D7 /* AllInsert.swift in Sources */,
 				D8CE861D22421EA3002B703B /* Comm.swift in Sources */,
