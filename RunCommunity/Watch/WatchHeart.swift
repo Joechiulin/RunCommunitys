@@ -17,13 +17,13 @@ class WatchHeart:Codable{
         self.date = date
     }
     var sDate:String{
-        let timeStampRawData = self.date!/1000
+        let timeStampRawData = date!/1000
         let timeInterval:TimeInterval = TimeInterval(timeStampRawData)
-        let date = Date(timeIntervalSince1970: timeInterval)
+        let date1 = Date(timeIntervalSince1970: timeInterval)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy年MM月dd日"
-        let timeRawData = dateFormatter.string(from: date)
-        return timeRawData
+        let timeRawData = dateFormatter.string(from: date1)
+        return timeRawData 
         }
     func getHeart() -> Float{
         return heart!

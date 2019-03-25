@@ -63,9 +63,9 @@ class InsertVC: UIViewController {
         //        let heartBeat = Float(h)
         let bloodOxygen = tfBloodOxygen.text == nil || tfBloodOxygen.text!.isEmpty ? "-1":
             tfBloodOxygen.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let sleep = tfSleep.text == nil || tfSleep.text!.isEmpty ? "-1":
+        let sleep = tfSleep.text == nil || tfSleep.text!.isEmpty ? "0":
             String((Int(tfSleep.text!.trimmingCharacters(in: .whitespacesAndNewlines))!)*3600000)
-        let deepSleep = tfDeepSleep.text == nil || tfDeepSleep.text!.isEmpty ? "-1":
+        let deepSleep = tfDeepSleep.text == nil || tfDeepSleep.text!.isEmpty ? "0":
             String((Int(tfDeepSleep.text!.trimmingCharacters(in: .whitespacesAndNewlines))!)*3600000)
         var requseParam = [String: Any]()
         let userDefault = UserDefaults.standard

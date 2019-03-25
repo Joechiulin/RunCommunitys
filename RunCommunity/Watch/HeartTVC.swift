@@ -12,6 +12,7 @@ class HeartTVC: UITableViewController {
     let url_server = URL(string: common_url_watch + "WatchServlet")
     var hearts = [Heart]()
     var stringDates = [String]()
+    var doubleHearts = [Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class HeartTVC: UITableViewController {
                     //                    print(String(data: data!, encoding: .utf8))
                     if let result = try?JSONDecoder().decode([Heart].self, from: data!){
                         self.hearts = result
-                        self.sortHeart()
+                        self.sortDate()
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -75,7 +76,7 @@ class HeartTVC: UITableViewController {
         cell.textLabel?.text = stringDates[indexPath.row]
         return cell
     }
-    func sortHeart() -> [String]{
+    func sortDate() -> [String]{
         for heart in self.hearts {
             if !(stringDates.contains(heart.sDate)){
                 stringDates.append(heart.sDate)
@@ -84,6 +85,16 @@ class HeartTVC: UITableViewController {
         stringDates.sort{ $0 > $1 }
         return stringDates
     }
+//    func sortHeart() -> String {
+//        for heart in self.hearts{
+//            doubleHearts.append(heart.doubleHeart)
+//        }
+//        let max = String(doubleHearts.max()!)
+//        let min = String(doubleHearts.min()!)
+//
+//        let detail =
+//        return ""
+//    }
     
     
     
@@ -160,35 +171,5 @@ class HeartTVC: UITableViewController {
             })
           })
         return [delete]
-//
-//        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-//            var requsetParam = [String: String]()
-//            requsetParam["action"] = "heartDelete"
-//            let userDefault = UserDefaults.standard
-//            let userAccount = userDefault.string(forKey: "userAccount")
-//            let heartDetail = Detail(userAccount!, self.stringDates[indexPath.row])
-//            requsetParam["heartDelete"] = try! String(data: JSONEncoder().encode(heartDetail), encoding: .utf8)
-//            executeTask(self.url_server!, requsetParam, completionHandler: { (data, reponse, error) in
-//                if error == nil {
-//                    if data != nil {
-//                        if let result = String(bytes: data!, encoding: .utf8){
-//                            if let count = Int(result){
-//                                if count != 0{
-//                                    self.hearts.remove(at: indexPath.row)
-//                                    DispatchQueue.main.async {
-//                                        tableView.deleteRows(at: [indexPath], with: .fade)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }else{
-//                    print(error!.localizedDescription)
-//                }
-//            })
-//
-//        }
-//        return [delete]
     }
-    
 }

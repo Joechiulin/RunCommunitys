@@ -29,7 +29,10 @@ class detailChartVC: UIViewController {
         requestParam["action"] = "getHeartDetail"
         let userDefault = UserDefaults.standard
         let userAccount = userDefault.string(forKey: "userAccount")
-        let heartDetail = Detail(userAccount!, heart!)
+        let startUnit = heart!.index(heart!.startIndex, offsetBy: 0)
+        let endUnit = heart!.index(startUnit, offsetBy: 10)
+        let realHeart = heart![startUnit..<endUnit]
+        let heartDetail = Detail(userAccount!, String(realHeart))
         requestParam["getHeartDetail"] = try!String(data: JSONEncoder().encode(heartDetail), encoding: .utf8)
         watchExecuteTask(url_server!, requestParam) { (data, response, error) in
             if error == nil{

@@ -17,12 +17,28 @@ class Heart:Codable{
         self.date = date
     }
     var sDate:String{
-        let timeStampRawData = (self.date!)/1000
+        let timeStampRawData = (date!)/1000
         let timeInterval:TimeInterval = TimeInterval(timeStampRawData)
-        let date = Date(timeIntervalSince1970: timeInterval)
+        let date1 = Date(timeIntervalSince1970: timeInterval)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let timeRawData = dateFormatter.string(from: date)
+        var timeRawData = dateFormatter.string(from: date1)
+        let weekday = Calendar.current.component(.weekday, from: date1)
+        if weekday == 1{
+            timeRawData+=" 星期日"
+        }else if weekday == 2{
+            timeRawData += " 星期一"
+        }else if weekday == 3{
+            timeRawData += " 星期二"
+        }else if weekday == 4{
+            timeRawData += " 星期三"
+        }else if weekday == 5{
+            timeRawData += " 星期四"
+        }else if weekday == 6{
+            timeRawData += " 星期五"
+        }else{
+            timeRawData += " 星期六"
+        }
         return timeRawData
     }
     var time:Double{
