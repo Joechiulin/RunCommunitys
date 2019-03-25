@@ -73,7 +73,7 @@ class detailChartVC: UIViewController {
                 let dataEntry = ChartDataEntry(x: time, y: heart)
                 dataEntries.append(dataEntry)
             }
-            let set1 = LineChartDataSet(entries: dataEntries, label: "HeartBeat")
+            let set1 = LineChartDataSet(entries:dataEntries, label: "HeartBeat")
             let data = LineChartData(dataSet: set1)
             self.lineChart.data = data
         }
