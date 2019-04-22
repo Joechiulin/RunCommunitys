@@ -14,14 +14,16 @@ class AllInsert:Codable{
     var bloodOxygen:String?
     var sleep:String?
     var deepSleep:String?
+    var date:String?
     
-    public  init(_ count:Int,_ userAccount:String,_ heartBeat:String,_ bloodOxygen:String,_ sleep:String,_ deepSleep:String){
+    public  init(_ count:Int,_ userAccount:String,_ heartBeat:String,_ bloodOxygen:String,_ sleep:String,_ deepSleep:String,_ date:String){
         self.count = count
         self.userAccount = userAccount
         self.heartBeat = heartBeat
         self.bloodOxygen = bloodOxygen
         self.sleep = sleep
         self.deepSleep = deepSleep
+        self.date = date
     }
     
 }

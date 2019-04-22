@@ -9,30 +9,33 @@
 import Foundation
 
 class Sleep:Codable{
+    var id:Int?
     var sleep:Float?
     var deepSleep:Float?
-    var date:Float?
+    var date:String?
     
-    public init(_ sleep:Float, _ deepSleep:Float, _ date:Float) {
+    public init(_ id:Int,_ sleep:Float, _ deepSleep:Float, _ date:String) {
+        self.id = id
         self.sleep = sleep
         self.deepSleep = deepSleep
         self.date = date
     }
     var sleepDate:String{
-        let dateSec = date!/1000
-        let timeInterval = Date(timeIntervalSince1970: TimeInterval(dateSec))
-        let sleepMonDay = Calendar.current.dateComponents([.month,.day], from: timeInterval)
-        let sleepDate = String(sleepMonDay.month!) + "-" + String(sleepMonDay.day!)
-        return sleepDate
+        let shortDate = String(self.date!.suffix(5))
+        return shortDate
     }
     var sleepHour:Double{
-        let sleepHour = sleep!/3600000
-        return Double(sleepHour)
+        return Double(sleep!)
     }
     var deepSleepHour:Double{
-        let deepSleepHour = deepSleep!/3600000
-        return Double(deepSleepHour)
+        return Double(deepSleep!)
     }
     
+    var sSleep:String{
+        let a = String(format:"%.1f", sleep!)
+        let b = String(format:"%.1f", deepSleep!)
+        let c = "淺眠/深眠: "+a+"/"+b
+        return c
+    }
 }
 

@@ -9,55 +9,68 @@
 import UIKit
 
 class Page_UserVC: UIViewController {
-
+    let userDefaults = UserDefaults.standard
     
     @IBOutlet weak var viewPersonal: UIView!
-    @IBOutlet weak var viewAchievement: UIView!
+    @IBOutlet weak var viewNotice: UIView!
     @IBOutlet weak var segmented: UISegmentedControl!
+    
+    var alertController = UIAlertController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewPersonal.isHidden = false
-        viewAchievement.isHidden = true
+        viewNotice.isHidden = true
         // Do any additional setup after loading the view.
     }
     
-//
-//    @IBAction func panGR(gesture: UIScreenEdgePanGestureRecognizer) {
-//        switch gesture.state {
-//        case .began:
-//            segmented.selectedSegmentIndex = 1
-//        case .ended:
-//            segmented.selectedSegmentIndex = 1
-//        default:
-//            break
-//        }
-//    }
+    
+    @IBAction func btSignOut(_ sender: Any) {
+        
+        alertController = UIAlertController(title: "登出", message:"確定要登出嗎？", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel)
+        let signOut = UIAlertAction(title: "登出", style: .default) {
+            (alertAction) in
+            
+            self.userDefaults.removeObject(forKey: "useraccount")
+            self.userDefaults.removeObject(forKey: "userpassword")
+            self.userDefaults.synchronize()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
+            let signInPage = storyboard.instantiateViewController(withIdentifier: "logInVC") as! ViewController
+            let appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = signInPage
+            
+        }
+        alertController.addAction(signOut)
+        alertController.addAction(cancel)
+        /* 呼叫present()才會跳出Alert Controller */
+        self.present(alertController, animated: true, completion:nil)
+    }
     
     
     @IBAction func scUserPage(_ sender: UISegmentedControl) {
         switch segmented.selectedSegmentIndex{
         case 0:
             viewPersonal.isHidden = false
-            viewAchievement.isHidden = true
+            viewNotice.isHidden = true
         case 1:
             viewPersonal.isHidden = true
-            viewAchievement.isHidden = false
+            viewNotice.isHidden = false
         default: fatalError()
         }
     }
     
-
+    
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

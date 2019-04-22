@@ -9,14 +9,13 @@
 import UIKit
 
 class HeartTVC: UITableViewController {
-    let url_server = URL(string: common_url_watch + "WatchServlet")
+    let url_server = URL(string: common_url + "WatchServlet")
     var hearts = [Heart]()
     var stringDates = [String]()
-    var doubleHearts = [Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        setUserAccount()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,28 +24,28 @@ class HeartTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
-        setUserAccount()
+        super.viewWillAppear(animated)
         showHeart()
     }
-    func setUserAccount(){
-        let userDefault = UserDefaults.standard
-        userDefault.set("pig200a", forKey: "userAccount")
-        userDefault.synchronize()
-    }
+//    func setUserAccount(){
+//        let userDefault = UserDefaults.standard
+//        userDefault.set("pig200a", forKey: "userAccount")
+//        userDefault.synchronize()
+//    }
     
     func showHeart(){
         let userDefault = UserDefaults.standard
-        let userAccount = userDefault.string(forKey: "userAccount")
+        let userAccount = userDefault.string(forKey: "useraccount")
         var requestPara = [String: String]()
         requestPara["action"] = "getHeart"
-        requestPara["UserAccount"] = userAccount
+        requestPara["userAccount"] = userAccount
         watchExecuteTask(url_server!, requestPara) { (data, reponse, error) in
             if error == nil{
                 if data != nil{
-                    //                    print(String(data: data!, encoding: .utf8))
+//                print(String(data: data!, encoding: .utf8))
                     if let result = try?JSONDecoder().decode([Heart].self, from: data!){
                         self.hearts = result
-                        self.sortDate()
+//                        self.sortDate()
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -65,26 +64,61 @@ class HeartTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //        print(hearts.count)
-        return stringDates.count
+        return hearts.count
         
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "heartCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "heartCell", for: indexPath) as! HeartTVCell
+        cell.lTitle?.text = hearts[indexPath.row].sDate
+        cell.lDetail?.text = hearts[indexPath.row].sHeart
+        //
         
-        cell.textLabel?.text = stringDates[indexPath.row]
+
+        //
+        let userDefault = UserDefaults.standard
+        var heartUpperLimit:Double?
+        var heartLowerLimit:Double?
+        if userDefault.double(forKey: "heartUpperLimit") == 0.0{
+            heartUpperLimit = 90
+        }else{
+            heartUpperLimit = userDefault.double(forKey: "heartUpperLimit")
+        }
+        if userDefault.double(forKey: "heartLowerLimit") == 0.0{
+            heartLowerLimit = 60
+        }else{
+            heartLowerLimit = userDefault.double(forKey: "heartLowerLimit")
+        }
+        let max = CGFloat(hearts[indexPath.row].maxHeart!)
+        let maxLimit = CGFloat(heartUpperLimit!)
+        if max > maxLimit{
+            let ivUpper = UIImage(named: "upper.png")
+            cell.ivUpper?.image = ivUpper
+        } else {
+             cell.ivUpper?.image = nil
+        }
+        let min = CGFloat(hearts[indexPath.row].minHeart!)
+        let minLimit = CGFloat(heartLowerLimit!)
+        if min < minLimit{
+            let ivLower = UIImage(named: "lower.png")
+            cell.ivLower?.image = ivLower
+        }else{
+                cell.ivLower?.image = nil
+        }
+//        print("maxLimit", maxLimit, max, min)
+
         return cell
     }
-    func sortDate() -> [String]{
-        for heart in self.hearts {
-            if !(stringDates.contains(heart.sDate)){
-                stringDates.append(heart.sDate)
-            }
-        }
-        stringDates.sort{ $0 > $1 }
-        return stringDates
-    }
+//    func sortDate() -> [String]{
+//        for heart in self.hearts {
+//            if !(stringDates.contains(heart.sDate)){
+//                stringDates.append(heart.sDate)
+//            }
+//        }
+//        stringDates.sort{ $0 > $1 }
+//        return stringDates
+//    }
 //    func sortHeart() -> String {
 //        for heart in self.hearts{
 //            doubleHearts.append(heart.doubleHeart)
@@ -139,8 +173,8 @@ class HeartTVC: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let row = tableView.indexPathForSelectedRow?.row, let
-            controller = segue.destination as? detailChartVC{
-            controller.heart = stringDates[row]
+            controller = segue.destination as? DetailHeartVC{
+            controller.date = hearts[row].date!
         }
     }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -148,16 +182,16 @@ class HeartTVC: UITableViewController {
             var requsetParam = [String: Any]()
             requsetParam["action"] = "heartDelete"
             let userDefault = UserDefaults.standard
-            let userAccount = userDefault.string(forKey: "userAccount")
-            let heartDetail = Detail(userAccount!, self.stringDates[indexPath.row])
-            requsetParam["heartDelete"] = try! String(data: JSONEncoder().encode(heartDetail), encoding: .utf8)
+            let userAccount = userDefault.string(forKey: "useraccount")
+            let detail = Detail(userAccount!, self.hearts[indexPath.row].date!)
+            requsetParam["heartDelete"] = try! String(data: JSONEncoder().encode(detail), encoding: .utf8)
             watchExecuteTask(self.url_server!, requsetParam, completionHandler: { (data, reponse, error) in
                 if error == nil {
                     if data != nil {
                         if let result = String(bytes: data!, encoding: .utf8){
                             if let count = Int(result){
                                 if count != 0{
-                                        self.stringDates.remove(at: indexPath.row)
+                                        self.hearts.remove(at: indexPath.row)
                                     DispatchQueue.main.async {
                                         tableView.deleteRows(at: [indexPath], with: .fade)
                                     }

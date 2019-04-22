@@ -8,7 +8,7 @@
 
 import Foundation
 
-let common_url_watch = "http://127.0.0.1:8080/RunCommunity_MySQL/"
+//let common_url_watch = "http://192.168.1.32:8080/RunCommunity_MySQL/"
 //public static String URL = "http://10.0.2.2:8080/Watch_MySQL";
 
 func watchExecuteTask(_ url_server: URL, _ requsetParm: [String:Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {

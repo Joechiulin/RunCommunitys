@@ -9,29 +9,69 @@
 import UIKit
 
 class Page_User_PersonalVC: UIViewController {
-     let userDefault = UserDefaults.standard
+    let userDefault = UserDefaults.standard
     @IBOutlet weak var lbUserName: UILabel!
     @IBOutlet weak var btUserPhoto: UIButton!
-    @IBOutlet weak var lbUserAge: UILabel!
+    @IBOutlet weak var lbUserCreateDate: UILabel!
     @IBOutlet weak var lbTotalTime: UILabel!
     @IBOutlet weak var lbTotalDistance: UILabel!
     @IBOutlet weak var lbTotalCalories: UILabel!
-    
-    let url_server = URL(string: "http://127.0.0.1:8080/ExIosLogin/UserPersonalPage")
-    
+    let url_server = URL(string: common_url+"UserServlet")
+    let url_serverrun = URL(string: common_url + "ServerConnectServlet")
+    var Rundetal   = [Runn]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.btUserPhoto.layer.cornerRadius=self.btUserPhoto.frame.size.width / 2;
+        takerundetal()
+    
+    self.btUserPhoto.layer.cornerRadius=self.btUserPhoto.frame.size.width / 2;
         self.btUserPhoto.clipsToBounds = true;
         
-        //假資料測試用
-        let account = "a123"
+        let account = userDefault.string(forKey: "useraccount")
+        
         var requestParam = [String: String]()
+        requestParam["action"] = "getUserName"
         requestParam["account"] = account
-        executeTask(url_server!, requestParam)
+        executeTasks(url_server!, requestParam)
+        
     }
     
-    func executeTask(_ url_server: URL, _ requestParam: [String: String]) {
+    override func viewWillAppear(_ animated: Bool) {
+        var photoParam = [String: String]()
+        photoParam["action"] = "getImageForUserName"
+        photoParam["account"] = userDefault.string(forKey: "useraccount")
+        photoTask(url_server!, photoParam)
+    }
+    func takerundetal(){
+        
+        var requestParams = [String: String]()
+
+        requestParams = ["action" : "getrundetal"]
+        requestParams["account"] = userDefault.string(forKey: "useraccount")
+        executeTask(url_serverrun!, requestParams) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    print("inputtime: \(String(data: data!, encoding: .utf8)!)")
+                    
+                    
+                    
+                    if let result = try? JSONDecoder().decode([String:String].self, from: data!) {
+                        DispatchQueue.main.async {
+                            self.lbTotalDistance.text = result["distance"]
+                            self.lbTotalTime.text = result["time"]
+                                }
+                            }
+                    
+                    
+                    }
+                
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    func executeTasks(_ url_server: URL, _ requestParam: [String: String]) {
         print("output: \(requestParam)")
         let jsonData = try! JSONEncoder().encode(requestParam)
         var request = URLRequest(url: url_server)
@@ -55,25 +95,37 @@ class Page_User_PersonalVC: UIViewController {
     }
     
     func showDetail(_ jsonData: Data) {
-        if let result = try? JSONDecoder().decode([String: String].self, from: jsonData) {
-            let account = result["sqlaccount"]!
-            let userName = result["sqluserName"]!
-            let userAge = result["sqluserAge"]!
-            let totalTime = result["sqltotalTime"]!
-            let totalDistance = result["sqltotalDistance"]!
-            let totalCalories = result["sqltotalCalories"]!
-            
-            lbUserName.text = userName
-            lbUserAge.text = userAge
-            lbTotalTime.text = totalTime
-            lbTotalDistance.text = totalDistance
-            lbTotalCalories.text = totalCalories
-            
-            self.userDefault.set(userName, forKey: "username")
-            self.userDefault.synchronize()
-        } else {
-            
+        if let result = try? JSONDecoder().decode(User.self, from: jsonData) {
+            lbUserName.text = result.username!
+            lbUserCreateDate.text = "最後修改時間：\(result.timestamp!)"
+            lbTotalTime.text = result.phone
+            lbTotalDistance.text = result.email
         }
     }
     
+    func photoTask(_ url_server: URL, _ photoParam: [String: String]) {
+        print("output: \(photoParam)")
+        let jsonData = try! JSONEncoder().encode(photoParam)
+        var request = URLRequest(url: url_server)
+        request.httpMethod = "POST"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        request.httpBody = jsonData
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    DispatchQueue.main.async {
+                        self.showPhoto(UIImage(data: data!)!)
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    func showPhoto(_ image:UIImage){
+        btUserPhoto.setImage(image, for: .normal)
+    }
 }

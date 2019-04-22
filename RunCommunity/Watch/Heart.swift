@@ -9,48 +9,28 @@
 import Foundation
 class Heart:Codable{
     
-    var heart:Float?
-    var date:Float?
+    var maxHeart:Float?
+    var minHeart:Float?
+    var date:String?
     
-    public init(_ heart:Float,_ date:Float){
-        self.heart = heart
+    public init(_ maxHeart:Float,_ minHeart:Float,_ date:String){
+        self.maxHeart = maxHeart
+        self.minHeart = minHeart
         self.date = date
     }
+    var sHeart:String{
+        let heart = "最大/最小 心跳: " + String(maxHeart!)+"/"+String(minHeart!)
+            return heart
+    }
     var sDate:String{
-        let timeStampRawData = (date!)/1000
-        let timeInterval:TimeInterval = TimeInterval(timeStampRawData)
-        let date1 = Date(timeIntervalSince1970: timeInterval)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var timeRawData = dateFormatter.string(from: date1)
-        let weekday = Calendar.current.component(.weekday, from: date1)
-        if weekday == 1{
-            timeRawData+=" 星期日"
-        }else if weekday == 2{
-            timeRawData += " 星期一"
-        }else if weekday == 3{
-            timeRawData += " 星期二"
-        }else if weekday == 4{
-            timeRawData += " 星期三"
-        }else if weekday == 5{
-            timeRawData += " 星期四"
-        }else if weekday == 6{
-            timeRawData += " 星期五"
-        }else{
-            timeRawData += " 星期六"
-        }
-        return timeRawData
-    }
-    var time:Double{
-        let timesec = self.date!/1000
-        let date = Date(timeIntervalSince1970: TimeInterval(timesec))
-        let timeHrMin = Calendar.current.dateComponents([.hour,.minute], from: date)
-        let trueTime = Double(timeHrMin.hour!)+Double(timeHrMin.minute!/60)
-        return trueTime
-    }
-    var doubleHeart:Double{
-        let doubleHeart = Double(heart!)
-        return doubleHeart
+        let timeRawData = dateFormatter.date(from: date!)
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateStyle = .full
+        dateFormatter1.locale = Locale(identifier: "zh_TW")
+        let fullDate = dateFormatter1.string(from: timeRawData!)
+        return fullDate
     }
 }
 
